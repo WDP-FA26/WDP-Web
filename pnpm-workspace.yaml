@@ -1,3 +1,16 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+# Single source of truth for versions shared across workspace packages.
+# Reference as "catalog:" in each package.json so they cannot drift apart.
+catalog:
+  "@types/node": "^22.15.3"
+  "@types/react": "19.1.0"
+  "@types/react-dom": "19.1.1"
+  eslint: "^9.34.0"
+  next: "16.3.0"
+  react: "^19.1.0"
+  react-dom: "^19.1.0"
+  swr: "^2.5.1"
+  typescript: "5.9.2"

@@ -4,6 +4,36 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@types/node':
+      specifier: ^22.15.3
+      version: 22.18.10
+    '@types/react':
+      specifier: 19.1.0
+      version: 19.1.0
+    '@types/react-dom':
+      specifier: 19.1.1
+      version: 19.1.1
+    eslint:
+      specifier: ^9.34.0
+      version: 9.37.0
+    next:
+      specifier: 16.3.0
+      version: 16.3.0
+    react:
+      specifier: ^19.1.0
+      version: 19.2.0
+    react-dom:
+      specifier: ^19.1.0
+      version: 19.2.0
+    swr:
+      specifier: ^2.5.1
+      version: 2.5.1
+    typescript:
+      specifier: 5.9.2
+      version: 5.9.2
+
 importers:
 
   .:
@@ -24,7 +54,7 @@ importers:
         specifier: ^2.11.2
         version: 2.11.2
       typescript:
-        specifier: 5.9.2
+        specifier: 'catalog:'
         version: 5.9.2
 
   apps/admin:
@@ -33,16 +63,16 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 16.3.0
+        specifier: 'catalog:'
         version: 16.3.0(@types/node@22.18.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       swr:
-        specifier: ^2.5.1
+        specifier: 'catalog:'
         version: 2.5.1(react@19.2.0)
     devDependencies:
       '@repo/eslint-config':
@@ -52,19 +82,19 @@ importers:
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@types/node':
-        specifier: ^22.15.3
+        specifier: 'catalog:'
         version: 22.18.10
       '@types/react':
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0
       '@types/react-dom':
-        specifier: 19.1.1
+        specifier: 'catalog:'
         version: 19.1.1(@types/react@19.1.0)
       eslint:
-        specifier: ^9.34.0
+        specifier: 'catalog:'
         version: 9.37.0(jiti@2.7.0)
       typescript:
-        specifier: 5.9.2
+        specifier: 'catalog:'
         version: 5.9.2
 
   apps/dashboard:
@@ -73,16 +103,16 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 16.3.0
+        specifier: 'catalog:'
         version: 16.3.0(@types/node@22.18.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       swr:
-        specifier: ^2.5.1
+        specifier: 'catalog:'
         version: 2.5.1(react@19.2.0)
     devDependencies:
       '@repo/eslint-config':
@@ -92,19 +122,19 @@ importers:
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@types/node':
-        specifier: ^22.15.3
+        specifier: 'catalog:'
         version: 22.18.10
       '@types/react':
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0
       '@types/react-dom':
-        specifier: 19.1.1
+        specifier: 'catalog:'
         version: 19.1.1(@types/react@19.1.0)
       eslint:
-        specifier: ^9.34.0
+        specifier: 'catalog:'
         version: 9.37.0(jiti@2.7.0)
       typescript:
-        specifier: 5.9.2
+        specifier: 'catalog:'
         version: 5.9.2
 
   apps/web:
@@ -113,13 +143,13 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 16.3.0
+        specifier: 'catalog:'
         version: 16.3.0(@types/node@22.18.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-dom:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
     devDependencies:
       '@repo/eslint-config':
@@ -129,19 +159,19 @@ importers:
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@types/node':
-        specifier: ^22.15.3
+        specifier: 'catalog:'
         version: 22.18.10
       '@types/react':
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0
       '@types/react-dom':
-        specifier: 19.1.1
+        specifier: 'catalog:'
         version: 19.1.1(@types/react@19.1.0)
       eslint:
-        specifier: ^9.34.0
+        specifier: 'catalog:'
         version: 9.37.0(jiti@2.7.0)
       typescript:
-        specifier: 5.9.2
+        specifier: 'catalog:'
         version: 5.9.2
 
   packages/eslint-config:
@@ -156,7 +186,7 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(eslint@9.37.0(jiti@2.7.0))(typescript@5.9.2)
       eslint:
-        specifier: ^9.34.0
+        specifier: 'catalog:'
         version: 9.37.0(jiti@2.7.0)
       eslint-config-prettier:
         specifier: ^10.1.1
@@ -194,16 +224,16 @@ importers:
         specifier: ^1.47.0
         version: 1.47.0(react@19.2.0)
       react:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0
       react-aria-components:
         specifier: ^1.21.1
         version: 1.21.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-dom:
-        specifier: ^19.1.0
+        specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
       swr:
-        specifier: ^2.5.1
+        specifier: 'catalog:'
         version: 2.5.1(react@19.2.0)
       tw-animate-css:
         specifier: ^1.4.0
@@ -219,22 +249,22 @@ importers:
         specifier: ^4.3.3
         version: 4.3.3
       '@types/node':
-        specifier: ^22.15.3
+        specifier: 'catalog:'
         version: 22.18.10
       '@types/react':
-        specifier: 19.1.0
+        specifier: 'catalog:'
         version: 19.1.0
       '@types/react-dom':
-        specifier: 19.1.1
+        specifier: 'catalog:'
         version: 19.1.1(@types/react@19.1.0)
       eslint:
-        specifier: ^9.34.0
+        specifier: 'catalog:'
         version: 9.37.0(jiti@2.7.0)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
       typescript:
-        specifier: 5.9.2
+        specifier: 'catalog:'
         version: 5.9.2
 
 packages:
@@ -3345,7 +3375,7 @@ snapshots:
 
   eslint@9.37.0(jiti@2.7.0):
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.0(eslint@9.37.0(jiti@2.7.0))
+      '@eslint-community/eslint-utils': 4.9.1(eslint@9.37.0(jiti@2.7.0))
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.21.0
       '@eslint/config-helpers': 0.4.0
