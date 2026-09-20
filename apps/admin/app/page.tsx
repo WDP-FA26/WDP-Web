@@ -32,7 +32,9 @@ export default function Home() {
         />
         <h1>Admin Panel</h1>
         <p>I come from localhost:3002 (Admin app)!</p>
-        <p style={{ fontSize: 20 }}>👀 Served under <code>/admin</code> on <code>:3024</code></p>
+        <p style={{ fontSize: 20 }}>
+          👀 Served under <code>/admin</code> on <code>:3024</code>
+        </p>
 
         <div className={styles.ctas}>
           <a className={styles.primary} href="/">

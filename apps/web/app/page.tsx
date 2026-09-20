@@ -32,7 +32,10 @@ export default function Home() {
         />
         <h1>Landing & Auth App</h1>
         <p>I come from localhost:3000 (Landing / Auth host app)!</p>
-        <p style={{ fontSize: 20 }}>👀 Access everything through proxy on <code>http://localhost:3024</code></p>
+        <p style={{ fontSize: 20 }}>
+          👀 Access everything through proxy on{" "}
+          <code>http://localhost:3024</code>
+        </p>
 
         <div className={styles.ctas}>
           <a className={styles.primary} href="/dashboard">

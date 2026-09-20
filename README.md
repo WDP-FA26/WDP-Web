@@ -1,137 +1,95 @@
-# Turborepo starter
+# WDP-Web
 
-This Turborepo starter is maintained by the Turborepo core team.
+A Turborepo and pnpm-powered monorepo configured for a Next.js App Router microfrontend architecture.
 
-## Using this example
+---
 
-Run the following command:
+## Architecture Overview
 
-```sh
-npx create-turbo@latest
+This monorepo manages multiple microfrontends orchestrated through Turborepo:
+
+### Applications (`apps/`)
+
+- **`web`** (`apps/web`): Main shell/host application.
+- **`dashboard`** (`apps/dashboard`): Dashboard microfrontend, routed at `/dashboard/*`.
+- **`admin`** (`apps/admin`): Administration portal microfrontend, routed at `/admin/*`.
+
+### Shared Packages (`packages/`)
+
+- **`@repo/ui`**: Shared React components consumed across applications.
+- **`@repo/typescript-config`**: Shared TypeScript configuration (`base.json`, `nextjs.json`, `react-library.json`).
+- **`@repo/eslint-config`**: Shared ESLint configurations.
+
+---
+
+## Prerequisites
+
+- **Node.js**: `>= 18`
+- **pnpm**: `^10.0.0` (ensure pnpm is installed: `corepack enable` or `npm install -g pnpm`)
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/WDP-FA26/WDP-Web.git
+cd WDP-Web
 ```
 
-## What's inside?
+### 2. Install dependencies
 
-This Turborepo includes the following packages/apps:
+> **Note**: This project strictly uses `pnpm`. Do not use `npm` or `yarn`.
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
+```bash
+pnpm install
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### 3. Start development server
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+Start all microfrontends concurrently:
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```bash
+pnpm dev
 ```
 
-### Develop
+### 4. Access the applications
 
-Visit `localhost:3024` to interact with your microfrontends.
+Once running, interact with the unified microfrontend gateway at:
 
-To develop all apps and packages, run the following command:
+| Application               | Routed URL                                                         | Direct Local Port |
+| :------------------------ | :----------------------------------------------------------------- | :---------------- |
+| **Microfrontend Gateway** | [http://localhost:3024](http://localhost:3024)                     | —                 |
+| **Web Shell**             | [http://localhost:3024/](http://localhost:3024/)                   | `3000`            |
+| **Dashboard**             | [http://localhost:3024/dashboard](http://localhost:3024/dashboard) | `3001`            |
+| **Admin**                 | [http://localhost:3024/admin](http://localhost:3024/admin)         | `3002`            |
 
+> Routing is configured via `apps/web/microfrontends.json`. Ports are assigned dynamically by Turborepo via `turbo get-mfe-port`.
+
+---
+
+## Available Scripts
+
+Run commands from the repository root:
+
+- **`pnpm dev`**: Start all apps in development mode with Turborepo microfrontend proxying.
+- **`pnpm build`**: Build all apps and packages for production.
+- **`pnpm check-types`**: Run TypeScript type-checking (`tsc --noEmit`) across all packages.
+- **`pnpm format`**: Format code and markdown files with Prettier.
+
+### Running a single package
+
+Use Turborepo filters to run commands for a specific app:
+
+```bash
+# Develop only a single app
+pnpm turbo dev --filter=web
+pnpm turbo dev --filter=dashboard
+pnpm turbo dev --filter=admin
+
+# Build a single app
+pnpm turbo build --filter=web
+pnpm turbo build --filter=dashboard
+pnpm turbo build --filter=admin
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
