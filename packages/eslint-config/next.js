@@ -1,7 +1,5 @@
 import pluginNext from "@next/eslint-plugin-next";
-import { config as reactConfig, shadcn } from "./react-internal.js";
-
-export { shadcn };
+import { config as reactConfig } from "./react-internal.js";
 
 /**
  * A custom ESLint configuration for libraries that use Next.js.
@@ -10,7 +8,7 @@ export { shadcn };
  * */
 export const nextJsConfig = [
   {
-    ignores: [".next/**", "dist/**", "node_modules/**"],
+    ignores: [".next/**"],
   },
   ...reactConfig,
   {

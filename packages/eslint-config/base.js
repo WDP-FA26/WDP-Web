@@ -2,7 +2,6 @@ import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
-import onlyWarn from "eslint-plugin-only-warn";
 import { plugin as shadcn } from "@shadcn/lint";
 
 /**
@@ -24,11 +23,6 @@ export const config = [
   },
   {
     plugins: {
-      onlyWarn,
-    },
-  },
-  {
-    plugins: {
       shadcn,
     },
     rules: {
@@ -46,7 +40,7 @@ export const config = [
     },
   },
   {
-    files: ["src/components/**", "**/src/components/**"],
+    files: ["**/src/components/**"],
     rules: {
       "shadcn/no-restyle": "off",
     },
@@ -55,6 +49,4 @@ export const config = [
     ignores: ["dist/**"],
   },
 ];
-
-export { shadcn };
 

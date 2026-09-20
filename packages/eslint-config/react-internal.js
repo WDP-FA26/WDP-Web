@@ -1,9 +1,7 @@
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginReact from "eslint-plugin-react";
 import globals from "globals";
-import { config as baseConfig, shadcn } from "./base.js";
-
-export { shadcn };
+import { config as baseConfig } from "./base.js";
 
 /**
  * A custom ESLint configuration for libraries that use React.
