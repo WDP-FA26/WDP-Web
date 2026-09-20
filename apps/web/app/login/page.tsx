@@ -1,66 +1,52 @@
-import styles from "../page.module.css";
+import { LinkButton } from "@repo/ui/components/button";
+import { ModeToggle } from "@repo/ui/mode-toggle";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@repo/ui/components/card";
 
 export default function LoginPage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <h1>Auth / Sign In</h1>
-        <p>
-          This auth route belongs to the Landing & Auth app (
-          <code>apps/web</code>).
-        </p>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-            width: "100%",
-            maxWidth: "320px",
-            marginTop: "1rem",
-          }}
-        >
+    <div className="relative flex min-h-screen items-center justify-center p-4 sm:p-8 font-sans">
+      <div className="fixed top-4 right-4">
+        <ModeToggle />
+      </div>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Auth / Sign In</CardTitle>
+          <CardDescription>
+            This auth route belongs to the Landing & Auth app (
+            <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
+              apps/web
+            </code>
+            ).
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
           <input
             type="email"
             placeholder="Email address"
-            style={{
-              padding: "10px 14px",
-              borderRadius: "8px",
-              border: "1px solid #444",
-              background: "transparent",
-              color: "inherit",
-            }}
+            className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           />
           <input
             type="password"
             placeholder="Password"
-            style={{
-              padding: "10px 14px",
-              borderRadius: "8px",
-              border: "1px solid #444",
-              background: "transparent",
-              color: "inherit",
-            }}
+            className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           />
-          <div className={styles.ctas} style={{ marginTop: "8px" }}>
-            <a
-              className={styles.primary}
-              href="/dashboard"
-              style={{ width: "100%", textAlign: "center" }}
-            >
-              Sign In to Dashboard →
-            </a>
-          </div>
-          <div className={styles.ctas}>
-            <a
-              className={styles.secondary}
-              href="/"
-              style={{ width: "100%", textAlign: "center" }}
-            >
-              ← Back to Landing
-            </a>
-          </div>
-        </div>
-      </main>
+        </CardContent>
+        <CardFooter className="flex flex-col gap-2">
+          <LinkButton href="/dashboard" variant="default" className="w-full">
+            Sign In to Dashboard →
+          </LinkButton>
+          <LinkButton href="/" variant="ghost" className="w-full">
+            ← Back to Landing
+          </LinkButton>
+        </CardFooter>
+      </Card>
     </div>
   );
 }

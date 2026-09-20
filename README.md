@@ -75,6 +75,7 @@ Run commands from the repository root:
 
 - **`pnpm dev`**: Start all apps in development mode with Turborepo microfrontend proxying.
 - **`pnpm build`**: Build all apps and packages for production.
+- **`pnpm lint`**: Run ESLint across all packages.
 - **`pnpm check-types`**: Run TypeScript type-checking (`tsc --noEmit`) across all packages.
 - **`pnpm format`**: Format code and markdown files with Prettier.
 
@@ -93,3 +94,11 @@ pnpm turbo build --filter=web
 pnpm turbo build --filter=dashboard
 pnpm turbo build --filter=admin
 ```
+
+---
+
+## Git Hooks
+
+This repository uses [Husky](https://typicode.github.io/husky/) to ensure code quality:
+
+- **`pre-commit`**: Automatically runs `pnpm lint` and `pnpm check-types` before every commit.

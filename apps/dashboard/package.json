@@ -7,11 +7,12 @@
     "dev": "next dev --port $(turbo get-mfe-port)",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --max-warnings 0",
+    "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "@teispace/next-themes": "^3.0.2",
     "next": "16.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"

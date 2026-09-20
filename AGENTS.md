@@ -15,6 +15,7 @@ Turborepo + pnpm monorepo. Next.js 16 / React 19 / TS 5.9. Apps use App Router (
 - `pnpm check-types` / `turbo check-types --filter=<name>` (`tsc --noEmit` per package).
 - `pnpm format` — `prettier --write "**/*.{ts,tsx,md}"` only; no prettier config file (defaults).
 - Verify order: `lint` → `check-types` → `build`. No test runner exists — do not add `test` scripts or expect vitest/jest/playwright.
+- Git hooks: Husky runs `pnpm lint` and `pnpm check-types` on `pre-commit`.
 
 ## Microfrontends (non-obvious)
 
