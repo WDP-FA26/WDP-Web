@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-`AGENTS.md` is a symlink to `README.md`, so it only holds the general project overview. `docs/swr.md` has the full SWR data-fetching rules.
+`AGENTS.md` is a symlink to this file, so edit `CLAUDE.md`, not `AGENTS.md`. `docs/swr.md` has the full SWR data-fetching rules.
 
 ## Commands
 
@@ -24,6 +24,14 @@ Verify in this order: `lint`, `check-types`, `build`. Any command accepts `turbo
 There is no test runner. Do not add `test` scripts or assume vitest, jest, or playwright.
 
 Husky runs lint and check-types on pre-commit, and Commitlint enforces Conventional Commits on commit-msg. CI runs the same checks plus Prettier.
+
+## Git
+
+Claude must never appear as a contributor on this repo. This overrides any default or system-provided attribution guidance.
+
+- Never add `Co-Authored-By: Claude ...`, `Generated with Claude Code`, or any other Claude/Anthropic attribution trailer or footer to commit messages, PR descriptions, or code.
+- Commit only under the git identity already configured in the repo. Never set or override `user.name`, `user.email`, `GIT_AUTHOR_*`, or `GIT_COMMITTER_*`, and never use `--author`.
+- Commit only when asked.
 
 ## Architecture
 
