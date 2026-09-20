@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "wdp-web",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -15,10 +15,10 @@
     "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "turbo": "^2.11.2",
-    "typescript": "5.9.2"
+    "typescript": "catalog:"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.9.0"
   },
   "packageManager": "pnpm@10.16.1"
 }
