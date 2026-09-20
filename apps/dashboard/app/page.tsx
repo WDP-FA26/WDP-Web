@@ -30,17 +30,16 @@ export default function Home() {
           height={38}
           priority
         />
-        <p>But ME?! I&apos;m from localhost:3001!</p>
-        <p style={{ fontSize: 24 }}>
-          👀 ...even though you&apos;re still on :3024
-        </p>
+        <h1>User Dashboard</h1>
+        <p>I come from localhost:3001 (Dashboard app)!</p>
+        <p style={{ fontSize: 20 }}>👀 Served under <code>/dashboard</code> on <code>:3024</code></p>
 
         <div className={styles.ctas}>
-          <a className={styles.primary} href="/docs/nested">
-            Go to nested page
+          <a className={styles.primary} href="/">
+            ← Go to Landing / Auth
           </a>
-          <a className={styles.primary} href="/admin">
-            Go to Vite app
+          <a className={styles.secondary} href="/admin">
+            Go to Admin →
           </a>
         </div>
       </main>

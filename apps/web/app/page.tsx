@@ -30,12 +30,19 @@ export default function Home() {
           height={38}
           priority
         />
-        <p>I come from localhost:3000!</p>
-        <p style={{ fontSize: 24 }}>👀 ...but you&apos;re looking at :3024</p>
+        <h1>Landing & Auth App</h1>
+        <p>I come from localhost:3000 (Landing / Auth host app)!</p>
+        <p style={{ fontSize: 20 }}>👀 Access everything through proxy on <code>http://localhost:3024</code></p>
 
         <div className={styles.ctas}>
-          <a className={styles.primary} href="/docs">
-            Go to docs app
+          <a className={styles.primary} href="/dashboard">
+            Go to User Dashboard →
+          </a>
+          <a className={styles.secondary} href="/admin">
+            Go to Admin Panel →
+          </a>
+          <a className={styles.secondary} href="/login">
+            Login Page (Auth) →
           </a>
         </div>
       </main>

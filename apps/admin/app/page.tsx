@@ -1,5 +1,5 @@
 import Image, { type ImageProps } from "next/image";
-import styles from "../page.module.css";
+import styles from "./page.module.css";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -30,11 +30,16 @@ export default function Home() {
           height={38}
           priority
         />
-        <p>I am a NESTED PAGE in localhost:3001!</p>
+        <h1>Admin Panel</h1>
+        <p>I come from localhost:3002 (Admin app)!</p>
+        <p style={{ fontSize: 20 }}>👀 Served under <code>/admin</code> on <code>:3024</code></p>
 
         <div className={styles.ctas}>
-          <a className={styles.primary} href="/docs">
-            Go to docs root
+          <a className={styles.primary} href="/">
+            ← Go to Landing / Auth
+          </a>
+          <a className={styles.secondary} href="/dashboard">
+            Go to User Dashboard →
           </a>
         </div>
       </main>
