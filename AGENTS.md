@@ -15,7 +15,8 @@ Turborepo + pnpm monorepo. Next.js 16 / React 19 / TS 5.9. Apps use App Router (
 - `pnpm check-types` / `turbo check-types --filter=<name>` (`tsc --noEmit` per package).
 - `pnpm format` — `prettier --write "**/*.{ts,tsx,md}"` only; no prettier config file (defaults).
 - Verify order: `lint` → `check-types` → `build`. No test runner exists — do not add `test` scripts or expect vitest/jest/playwright.
-- Git hooks: Husky runs `pnpm lint` and `pnpm check-types` on `pre-commit`.
+- Git hooks: Husky runs lint and check-types on `pre-commit`, and Conventional Commits validation via Commitlint on `commit-msg`.
+- CI: GitHub Actions (`.github/workflows/ci.yml`) runs on PRs and push to `main`, validating PR title/commits via Commitlint, formatting via Prettier, and executing `lint` → `check-types` → `build` with Turborepo caching.
 
 ## Microfrontends (non-obvious)
 
@@ -33,5 +34,5 @@ Turborepo + pnpm monorepo. Next.js 16 / React 19 / TS 5.9. Apps use App Router (
 ## Gotchas
 
 - Root `README.md` is stale starter boilerplate (mentions a `docs` app that does not exist). Trust `apps/*` + `pnpm-workspace.yaml`, not the README app list.
-- `turbo.json` `build` inputs include `.env*` — env changes invalidate build cache; `.env*.local` files are gitignored per-app.
+- `turbo.json` `build` inputs include `.env*` — env changes invalidate build cache; `.env*.local` files are gitignored centrally in the root `.gitignore`.
 - `check-types` configs set `strictNullChecks: true`, `noEmit`, `jsx: preserve`, `moduleResolution: Bundler`.

@@ -1,2 +1,1 @@
-pnpm lint
-pnpm check-types
+pnpm exec turbo run lint check-types
