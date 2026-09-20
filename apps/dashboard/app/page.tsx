@@ -1,5 +1,5 @@
 import Image, { type ImageProps } from "next/image";
-import { LinkButton } from "@repo/ui/components/button";
+import { LinkButton } from "@repo/ui/button";
 import { ModeToggle } from "@repo/ui/mode-toggle";
 
 type Props = Omit<ImageProps, "src"> & {
